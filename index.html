@@ -269,7 +269,7 @@ body.locked{position:fixed;width:100%;overflow:hidden}
 
 <div class="bus-wrap">
   <div class="bus-top">
-    <span class="now"><span id="busLabel">公車開往</span>　<b id="stopName">百年樓</b></span>
+    <span class="now"><span id="busLabel">下一站</span>　<b id="stopName">百年樓</b></span>
     <span class="pctpill num" id="pct">0%</span>
   </div>
   <div class="route" id="route">
@@ -684,7 +684,7 @@ function progress(){
   /* 顯示「正在開往」的下一站；抵達終點則改為「已抵達」 */
   const lbl=$('#busLabel'), nm=$('#stopName');
   if(pct>=100){ lbl.textContent='已抵達'; nm.textContent=STOPS[N-1]; }
-  else{ lbl.textContent='公車開往'; nm.textContent=STOPS[Math.min(N-1,si+1)]; }
+  else{ lbl.textContent='下一站'; nm.textContent=STOPS[Math.min(N-1,si+1)]; }
   if(si>lastStop&&pct>0)toast('叮咚——<b>'+STOPS[si]+'</b> 到了');
   lastStop=si;
   const t=tierOf(pct);
