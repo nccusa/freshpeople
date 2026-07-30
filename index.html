@@ -629,7 +629,7 @@ body.locked{position:fixed;width:100%;overflow:hidden}
   <span class="cap">100% COMPLETE</span>
   <h2>抵達指南山頂<br>你已經準備好了</h2>
   <p>清單全數完成。開學後有任何卡關，學生會等你來聊。</p>
-  <button class="btn" id="shareBig">看我的檢測進度<span class="ico">↗</span></button>
+  <button class="btn" id="shareBig">看我的檢核結果<span class="ico">↗</span></button>
 </div>
 
 <div class="privacy">
@@ -647,7 +647,7 @@ body.locked{position:fixed;width:100%;overflow:hidden}
 
 <div class="modal" id="modal">
   <div class="modal-box">
-    <img id="previewImg" alt="我的開學檢測進度">
+    <img id="previewImg" alt="我的入學待辦清單">
     <p class="modal-hint">手機請<b>長按圖片</b>→「儲存影像」，就會存進相簿</p>
     <div class="modal-btns">
       <button class="btn btn-share" id="btnShare">分享<span class="ico">↗</span></button>
@@ -920,7 +920,7 @@ function buildCanvas(){
   x.fillStyle='#8A8676';x.font='700 23px "Space Mono",monospace';
   x.fillText('NCCU FRESHPEOPLE CHECKLIST',CX+P,CY+72);
   x.fillStyle='#2C3A38';x.font='900 46px "Noto Sans TC",sans-serif';
-  x.fillText('我的開學檢測進度',CX+P,CY+140);
+  x.fillText('我的入學待辦清單',CX+P,CY+140);
   const lb=$('#logoB');
   if(lb.complete&&lb.naturalWidth){const h=72,w=h*lb.naturalWidth/lb.naturalHeight;x.drawImage(lb,CX+CW-P-w,CY+62,w,h);}
 
@@ -979,7 +979,7 @@ function canvasBlob(){return new Promise(r=>lastCanvas.toBlob(r,'image/png'));}
 $('#btnShare').addEventListener('click',async()=>{
   if(!lastCanvas)return;
   const b=await canvasBlob();
-  const f=new File([b],'我的開學檢測進度.png',{type:'image/png'});
+  const f=new File([b],'我的入學待辦清單.png',{type:'image/png'});
   if(navigator.canShare&&navigator.canShare({files:[f]})){
     try{await navigator.share({files:[f]});return}catch(e){}
   }
@@ -999,7 +999,7 @@ if(isIOS){
     const b=await canvasBlob();
     const url=URL.createObjectURL(b);
     const a=document.createElement('a');a.href=url;
-    a.download='我的開學檢測進度.png';
+    a.download='我的入學待辦清單.png';
     document.body.appendChild(a);a.click();a.remove();
     setTimeout(()=>URL.revokeObjectURL(url),3000);
     toast('已下載');
